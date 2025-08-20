@@ -1,10 +1,10 @@
 local SolarisLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/vateq/UILIBrewrites/refs/heads/main/justtestin"))()
 local win = SolarisLib:New({
-  Name = "Meme Sea - by candyhub / vateq#0",
+  Name = "Kai Hub | Meme Sea",
   FolderToSave = "SolarisLibStuff"
 })
 
-local tab = win:Tab("AutoFarm")
+local tab = win:Tab("Main Farm")
 local sec = tab:Section("AutoFarm")
 
 local tab2 = win:Tab("Stats")

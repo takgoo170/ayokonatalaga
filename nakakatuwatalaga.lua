@@ -15,5 +15,5 @@ Window:AddMinimizeButton({
   })
 
 
-local Tab1 = Window:MakeTab({ "Example", "house" })
-local Tab2 = Window:MakeTab({ "Example Ui", "carrot" })
+local Tab1 = Window:MakeTab({ "Main Farm", "swords" })
+local Tab2 = Window:MakeTab({ "Stats", "barchart" })

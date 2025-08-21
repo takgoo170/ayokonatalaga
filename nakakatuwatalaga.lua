@@ -14,7 +14,6 @@ Window:AddMinimizeButton({
     Corner = { CornerRadius = UDim.new(35, 1) },
   })
 
-redzlib:SetTheme("Purple")
 
 local Tab1 = Window:MakeTab({ "Example", "house" })
 local Tab2 = Window:MakeTab({ "Example Ui", "carrot" })

@@ -227,7 +227,7 @@ RunService.RenderStepped:Connect(function()
 	end
 end)
 
-maintab:AddButton("Glove Triggerbot", function()
+--[[maintab:AddButton("Glove Triggerbot", function()
     enabled = not enabled
 
     local StarterGui = game:GetService("StarterGui")
@@ -237,7 +237,7 @@ maintab:AddButton("Glove Triggerbot", function()
         Duration = 2
     })
 end)
-
+]]
 maintab:AddButton("Spam Quake", "Must equip QUAKE first.", function()
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local remote = ReplicatedStorage:WaitForChild("QuakeQuake")

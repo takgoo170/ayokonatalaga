@@ -29,7 +29,7 @@ if currentPlaceId == slapbattles or currentPlaceId == slapbattles2 or currentPla
 local ui = loadstring(game:HttpGet("https://pastebin.com/raw/PQBu5K3w"))()
 
 local win = ui:Create({
-    Name = "Celeron's GUI (Slap Battles)",
+    Name = "Kai Hub | Slap Battles",
     ThemeColor = Color3.fromRGB(14, 14, 14),
     StartupSound = "rbxassetid://6958727243",
     ThemeFont = Enum.Font.FredokaOne
@@ -39,19 +39,17 @@ local maintab = win:Tab("Main")
 local antitab = win:Tab("Protection")
 local exptab = win:Tab("Exploits")
 local farmtab = win:Tab("Farms")
-local teletab = win:Tab("Map")
+local teletab = win:Tab("Teleport")
 local funtab = win:Tab("Fun")
 local modetab = win:Tab("Modes")
-local misctab = win:Tab("Others")
+local misctab = win:Tab("Misc")
 local helptab = win:Tab("Info")
 
-maintab:Label("Script Made By Celeron + Daffy!")
-exptab:Label("This Section Contains Useful / Game-Breaking Scripts.")
-antitab:Label("Protection Settings May Be Blatant.")
-helptab:Label("GUI Controls Are Below, Script Credits Are At The Bottom!")
-helptab:Label("Show / Hide GUI: Right Alt")
-
-misctab:Button("Infinite Yield", function()
+maintab:Label("Script was made by Takgoo — Kai Hub Owner")
+exptab:Label("This script contains a lot of new function, working function and more.")
+antitab:Label("Enable all safety toggle to prevent exploits issue.")
+helptab:Label("UI wasn't made by me, I give credits to the owner of this ui.")
+helptab:Label("Show / Hide GUI: Right All infinite Yield", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
 end)
 

@@ -2,7 +2,7 @@
 -- wala eh.
 -- ganon talaga.
 
-local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/takgoo170/ui_source/refs/heads/main/redzhub.ui.luau"))()
+local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/tbao143/Library-ui/refs/heads/main/Redzhubui"))()
 local Window = redzlib:MakeWindow({
     Title = "Kai Hub | Meme Sea",
     Subtitle = "by Kai Scripts",

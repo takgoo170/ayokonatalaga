@@ -309,7 +309,10 @@ local weapondropdown = tab1:AddDropdown({
             _G.candyhub.weapon = t
 end
 
-local RefreshButton = tab1:AddButton({ "Refresh Weapon List", "Refrehes the weapon's list dropdown", function()
+local RefreshButton = tab1:AddButton({ 
+                Name = "Refresh Weapon List", 
+                Description = "Refrehes the weapon's list dropdown", 
+                Callback = function()
                     itemslist = {}
     for i, item in game.Players.LocalPlayer.Backpack:GetChildren() do
         if not item.Name:match('Power') then

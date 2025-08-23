@@ -444,3 +444,251 @@ local BringEnemiesToggle = tab1:AddToggle({
     end
 end
 })
+
+tab1:AddSection({"Bosses"})
+local AutoFarmBoss = tab1:AddToggle({
+                Name = "Auto Farm Boss",
+                Description = "Auto farms the selected boss(es).",
+                Default = false,
+                Callback = function(t)
+                    _G.candyhub.autoboss = t
+    while _G.candyhub.autoboss and task.wait(1) do
+        if workspace:FindFirstChild('Monster') then
+            if Lives() then
+                for i, boss in _G.candyhub.tokill_bosses do
+                    if not workspace.Monster:FindFirstChild(boss) then
+                        if Lives() then
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Location.Enemy_Location:FindFirstChild(boss).CFrame
+                        end
+                    end
+                    if _G.candyhub.questmode then
+                        if workspace:FindFirstChild('NPCs'):FindFirstChild('Quests_Npc'):FindFirstChild(GetQuest(boss)) then
+                            if Lives() and workspace.NPCs.Quests_Npc:FindFirstChild(GetQuest(boss)):FindFirstChild('Block') then
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.NPCs.Quests_Npc:FindFirstChild(GetQuest(boss)):FindFirstChild('Block').CFrame
+                                task.wait(0.001)
+                                UseQuest(workspace.NPCs.Quests_Npc:FindFirstChild(GetQuest(boss)):FindFirstChild('Block'):FindFirstChild('QuestPrompt'), 5)
+                                task.wait(0.001)
+                            end
+                        end
+                    end
+                    if workspace:FindFirstChild('Monster'):FindFirstChild(boss) then
+                        if workspace:FindFirstChild('Monster'):FindFirstChild(boss):FindFirstChild('Humanoid') and workspace:FindFirstChild('Monster'):FindFirstChild(boss):FindFirstChild('HumanoidRootPart') then
+                            UseAura()
+                            while workspace:FindFirstChild('Monster'):FindFirstChild(boss):FindFirstChild("Humanoid").Health >= 1 and _G.candyhub.autoboss and Lives() do
+                                if workspace:FindFirstChild('Monster'):FindFirstChild(boss):FindFirstChild("HumanoidRootPart") then
+                                    workspace:FindFirstChild('Monster'):FindFirstChild(boss):FindFirstChild("HumanoidRootPart").Size=Vector3.new(17,17,17)
+                                    if _G.candyhub.devtest then
+                                        workspace:FindFirstChild('Monster'):FindFirstChild(boss):FindFirstChild("HumanoidRootPart").Transparency = 0.8
+                                    end
+                                end
+                                if Lives() then
+                                    workspace:FindFirstChild('Monster'):FindFirstChild(boss):FindFirstChild("HumanoidRootPart").Size=Vector3.new(17,17,17)
+                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace:FindFirstChild('Monster'):FindFirstChild(boss):FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, -5, 8)
+                                end
+                                click(10)
+                                task.wait()
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+end
+            })
+local MemeBeastToggle = tab1:AddToggle({
+                Name = "Auto Meme Beast",
+                Default = false,
+                Callback = function(t)
+                    _G.candyhub.memebeast = t
+    while _G.candyhub.memebeast and task.wait() do
+        if workspace:FindFirstChild('Monster'):FindFirstChild('Meme Beast') then
+            if Lives() then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Location.Enemy_Location["Meme Beast"].CFrame
+                if not workspace:FindFirstChild('Monster'):FindFirstChild('Meme Beast') then
+                    task.wait(1)
+                else
+                    UseAura()
+                    if workspace:FindFirstChild('Monster'):FindFirstChild('Meme Beast'):FindFirstChild('HumanoidRootPart') then
+                        if workspace:FindFirstChild('Monster'):FindFirstChild('Meme Beast'):FindFirstChild('Humanoid') then
+                            if workspace:FindFirstChild('Monster'):FindFirstChild('Meme Beast'):FindFirstChild('Humanoid').Health >= 1 then
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace:FindFirstChild('Monster'):FindFirstChild('Meme Beast'):FindFirstChild('HumanoidRootPart').CFrame * CFrame.new(0, -5, 8)
+                                click(10)
+                            end
+                        end
+                    end
+                end
+            end
+        else
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Location.Enemy_Location["Meme Beast"].CFrame
+            if not workspace:FindFirstChild('Monster'):FindFirstChild('Meme Beast') then
+                task.wait(1)
+            end
+        end
+    end
+end
+            })
+
+local BossDropdown = tab1:AddDropdown({
+                Name = "Select a Boss",
+                Description = "Select the boss that you want to Kill.",
+                Options = {"MrBeast","Rick Roller","Moai","Pink Absorber","Obamid","Gorilla King","Sus Face","Walter Dog","Big Floppa"},
+                Default = "...",
+                Callback = function(t)
+                    _G.candyhub.tokill_bosses = t
+                end
+            })
+
+local spec = tab1:AddSection({"Specified"})
+local farmspectoggle = tab1:AddToggle({
+                Name = "Auto Farm Specified",
+                Description = "",
+                Default = false,
+                Callback = function(t)
+                    _G.candyhub.autokillspec = t
+    while _G.candyhub.autokillspec and task.wait() do
+        if workspace:FindFirstChild('Monster'):FindFirstChild(_G.candyhub.tokill_monster) then
+            for i, monster in workspace:FindFirstChild('Monster'):GetChildren() do
+                if monster.Name == _G.candyhub.tokill_monster then
+                    if _G.candyhub.questmode then
+                        SureQuest(GetQuest(_G.candyhub.tokill_monster))
+                        if not CheckQuest() then
+                            if workspace.NPCs.Quests_Npc:FindFirstChild(GetQuest(_G.candyhub.tokill_monster)) and Lives() then
+                                if workspace.NPCs.Quests_Npc:FindFirstChild(GetQuest(_G.candyhub.tokill_monster)):FindFirstChild('Block') then
+                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.NPCs.Quests_Npc:FindFirstChild(GetQuest(_G.candyhub.tokill_monster)):FindFirstChild('Block').CFrame
+                                    task.wait(0.05)
+                                    UseQuest(workspace.NPCs.Quests_Npc:FindFirstChild(GetQuest(_G.candyhub.tokill_monster)):FindFirstChild('Block'):FindFirstChild('QuestPrompt'), 5)
+                                    UseQuest(workspace.NPCs.Quests_Npc:FindFirstChild(GetQuest(_G.candyhub.tokill_monster)):FindFirstChild('Block'):FindFirstChild('QuestPrompt'), 5)
+                                    task.wait(0.05)
+                                end
+                            end
+                        end
+                    end
+                    if monster:FindFirstChild('HumanoidRootPart') and monster:FindFirstChild('Humanoid') then
+                        if monster:FindFirstChild('Humanoid').Health >= 1 then
+                            if Lives() then
+                                while monster:FindFirstChild('Humanoid').Health >= 1 and _G.candyhub.autokillspec do
+                                    if Lives() then
+                                        UseAura()
+                                        monster:FindFirstChild('HumanoidRootPart').Size = Vector3.new(16,16,16)
+                                        if _G.candyhub.devtest then
+                                            monster:FindFirstChild('HumanoidRootPart').Transparency = 0.8
+                                        end
+                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = monster:FindFirstChild('HumanoidRootPart').CFrame * CFrame.new(0,-5,8)
+                                        click(10)
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        else
+            if Lives() then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Location.Enemy_Location:FindFirstChild(_G.candyhub.tokill_monster).CFrame
+                task.wait(0.5)
+            end
+        end
+    end
+end
+            })
+
+local specdropdown = tab1:AddDropdown({
+                Name = "Select Monster",
+                Options = _G.candyhub.monsters,
+                Default = "...",
+                Callback = function(t)
+                    _G.candyhub.tokill_monster = t
+                end
+            })
+
+local bringenemies2toggle = tab1:AddToggle({
+                Name = "Bring Mobs",
+                Description = "Brings Mob [ SPECIFIED MODE ]",
+                Default = false,
+                Callback = function(t)
+                    bringenemiestoggle:Set(t)
+                end
+            })
+
+        -- game.Players.LocalPlayer:GetAttribute('Raiding') -- raid id
+-- workspace.Raids:FindFirstChild('Raid_'..game.Players.LocalPlayer:GetAttribute('Raiding')) -- current raid
+--[[
+
+if game.Players.LocalPlayer:GetAttribute('Raiding') == '' then
+    -- player is not raiding
+end
+
+]]
+
+--------------- RAID | TAB ----------------
+local RaidToggle = tab4:AddToggle({
+                Name = "Auto Raid",
+                Description = "Starts raiding",
+                Default = false,
+                Callback = function(t)
+                    _G.candyhub.autoraid = t
+    while _G.candyhub.autoraid and task.wait() do
+        while game.Players.LocalPlayer:GetAttribute('Raiding') == '' or game.Players.LocalPlayer:GetAttribute('Raiding') == nil and task.wait() and _G.candyhub.autoraid do
+            if Lives() then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Island.MrBeastIsland.Raid_Area.CFrame
+                game:GetService("ReplicatedStorage"):WaitForChild("OtherEvent"):WaitForChild("MiscEvents"):WaitForChild("StartRaid"):FireServer("Start")
+            end
+        end
+        game:GetService("ReplicatedStorage"):WaitForChild("OtherEvent"):WaitForChild("MiscEvents"):WaitForChild("StartRaid"):FireServer("Start")
+        for i, monster in workspace:FindFirstChild('Monster'):GetChildren() do
+            if monster.Name == 'Super Popcat' or monster.Name == 'Maxwell The Cat' or monster.Name == 'Reverse Master' or monster.Name == 'Floppa Man' or monster.Name == 'Epic Doge' or monster.Name == 'Speedy Cheems' or monster.Name == 'Tanky Moai' or monster.Name == 'Killer Nugget' or monster.Name == 'The Stone' or monster.Name == 'Capybara' then
+                if monster:FindFirstChild('HumanoidRootPart') and monster:FindFirstChild('Humanoid') then
+                    --if monster.Name == 'Super Popcat' or monster.Name == 'Maxwell The Cat' or monster.Name == 'Reverse Master' then
+                    if Lives() then
+                        if monster:FindFirstChild('HumanoidRootPart') and monster:FindFirstChild('Humanoid') and monster:FindFirstChild('Humanoid').Health >= 1 then
+                            monster:FindFirstChild('HumanoidRootPart').Size = Vector3.new(16,16,16)
+                            if _G.candyhub.devtest then
+                                monster:FindFirstChild('HumanoidRootPart').Transparency = 0.8
+                            end
+                        end
+                        UseAura()
+                        while monster:FindFirstChild('Humanoid') and monster:FindFirstChild('Humanoid').Health >= 1 and _G.candyhub.autoraid and task.wait() do
+                            if monster.Name == 'Maxwell The Cat' then
+                                if not workspace:FindFirstChild('Monster'):FindFirstChild('Floppa Man') then
+                                    if not workspace:FindFirstChild('Monster'):FindFirstChild('Speedy Cheems') then
+                                        if not workspace:FindFirstChild('Monster'):FindFirstChild('Epic Dog') then
+                                            if not monster:FindFirstChild('Reverse_Mark') then
+                                                if Lives() and monster:FindFirstChild('HumanoidRootPart') then
+                                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = monster:FindFirstChild('HumanoidRootPart').CFrame * CFrame.new(0,-5,8)
+                                                end
+                                            else
+                                                if Lives() and monster:FindFirstChild('HumanoidRootPart') then
+                                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = monster:FindFirstChild('HumanoidRootPart').CFrame * CFrame.new(0,-5,13)
+                                                end
+                                            end
+                                        else
+                                            break
+                                        end
+                                    else
+                                        break
+                                    end
+                                else
+                                    break
+                                end
+                            else
+                                if not monster:FindFirstChild('Reverse_Mark') then
+                                    if Lives() and monster:FindFirstChild('HumanoidRootPart') then
+                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = monster:FindFirstChild('HumanoidRootPart').CFrame * CFrame.new(0,-5,8)
+                                    end
+                                else
+                                    if Lives() and monster:FindFirstChild('HumanoidRootPart') then
+                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = monster:FindFirstChild('HumanoidRootPart').CFrame * CFrame.new(0,-5,13)
+                                    end
+                                end
+                            end
+                            --end
+                            click(10)
+                        end
+                    end
+                    --end
+                end
+            end
+        end
+    end
+end

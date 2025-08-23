@@ -611,11 +611,11 @@ if _G.NotificationSound then
 Library:SetDPIScale(85)
 if game.PlaceId == 6403373529 or game.PlaceId == 9015014224 or game.PlaceId == 11520107397 or game.PlaceId == 124596094333302 then
 local Window = Library:CreateWindow({
-    Title = "Slap Battles 👏",
+    Title = "Kai Hub | Slap Battles",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
+	Footer = "Kai Hub [ v.01 ]",
 	Icon = 83462777349222,
 	ShowCustomCursor = true,
     NotifySide = "Right",
@@ -636,8 +636,8 @@ Tabs = {
 
 local InfoServer1Group = Tabs.Tab:AddLeftGroupbox("Server")
 
-CanYouFps = InfoServer1Group:AddLabel("Your Fps [ "..math.floor(workspace:GetRealPhysicsFPS()).." ]", true)
-CanYouPing = InfoServer1Group:AddLabel("Your Ping [ "..game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString().." ]", true)
+CanYouFps = InfoServer1Group:AddLabel("Device Fps [ "..math.floor(workspace:GetRealPhysicsFPS()).." ]", true)
+CanYouPing = InfoServer1Group:AddLabel(" Ping [ "..game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString().." ]", true)
 ServerPlayer = InfoServer1Group:AddLabel("Player In Server [ "..#game.Players:GetPlayers().." / "..game.Players.MaxPlayers.." ]", true)
 TimeServer = InfoServer1Group:AddLabel("Server Time [ "..math.floor(workspace.DistributedGameTime / 60 / 60).." Hour | "..math.floor(workspace.DistributedGameTime / 60) - (math.floor(workspace.DistributedGameTime / 60 / 60) * 60).." Minute | "..math.floor(workspace.DistributedGameTime) - (math.floor(workspace.DistributedGameTime / 60) * 60).." Second ]", true)
 TimeNow = InfoServer1Group:AddLabel("Now Time [ "..os.date("%X").." ]", true)
@@ -650,7 +650,7 @@ AlarmTime = InfoServer1Group:AddLabel("Good Evening [ "..tonumber(os.date("%H"))
 else
 AlarmTime = InfoServer1Group:AddLabel("Good Night [ "..tonumber(os.date("%H")).." Hour ]", true)
 end
-AgeAccYou = InfoServer1Group:AddLabel("You Account Age [ "..game.Players.LocalPlayer.AccountAge.." ]", true)
+AgeAccYou = InfoServer1Group:AddLabel("Account Age [ "..game.Players.LocalPlayer.AccountAge.." ]", true)
 if game.Workspace:FindFirstChild("RoomsFolder") then
 PocketSpawn = {}
 for i,v in pairs(game.Workspace.RoomsFolder:GetChildren()) do

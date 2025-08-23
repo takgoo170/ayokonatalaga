@@ -622,6 +622,7 @@ end
 ]]
 
 --------------- RAID | TAB ----------------
+tab4:AddSection({"Raid"})
 local RaidToggle = tab4:AddToggle({
                 Name = "Auto Raid",
                 Description = "Starts raiding",
@@ -692,3 +693,43 @@ local RaidToggle = tab4:AddToggle({
         end
     end
 end
+            })
+
+local bringenemyraidtoggle = tab4:AddToggle({
+                Name = "Bring Mobs",
+                Description = "Brings mobs, [ RAID MODE ]",
+                Default = false,
+                Callback = function(t)
+                    bringenemiestoggle:Set(t)
+                end
+            })
+
+--------------- SETTINGS | TAB --------------
+tab5:AddSection({"Settings"})
+local questmode = tab5:AddToggle({
+                Name = "No Quests",
+                Default = false,
+                Callback = function(t)
+                    _G.candyhub.questmode = not t
+                end
+            })
+-------------- SHOP | TAB --------------
+tab3:AddSection({"Shop"})
+tab3:AddButton({
+            Name = "Redeem Codes",
+            Callback = function()
+                    local codes = {"100MVisits","100KLikes","100KFavorites","100KActive","70KActive","40KActive","20KActive","10KActive","10KMembers","Update4","4KActive","10KLikes","10MVisits","9MVisits"}
+    for i, code in codes do
+    game:GetService("ReplicatedStorage"):WaitForChild("OtherEvent"):WaitForChild("MainEvents"):WaitForChild("Code"):InvokeServer(code)
+    end
+                end
+            })
+tab3:AddButton({
+            Name = "Roll Powers",
+            Callback = function()
+                    for i = 1,_G.candyhub.amount do
+        local args = {[1] = "Random_Power",[2] = {["Type"] = "Once",["NPCName"] = "Floppa Gacha",["GachaType"] = _G.candyhub.buyfruitmode}}
+        game:GetService("ReplicatedStorage"):WaitForChild("OtherEvent"):WaitForChild("MainEvents"):WaitForChild("Modules"):FireServer(unpack(args))
+    end
+                end
+            })

@@ -50,8 +50,8 @@ local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/d
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 
 local Window = Fluent:CreateWindow({
-    Title = "MetroHub: Pets Go Script" .. Fluent.Version,
-    SubTitle = "by Sigmaduede",
+    Title = "Kai Hub | Pet's Go" .. Fluent.Version,
+    SubTitle = "by Takgoo and Kai Team",
     TabWidth = 160,
     Size = UDim2.fromOffset(580, 460),
     Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
@@ -1746,4 +1746,5 @@ Window:SelectTab(1)
 -- You can use the SaveManager:LoadAutoloadConfig() to load a config
 -- which has been marked to be one that auto loads!
 SaveManager:LoadAutoloadConfig()
+
 end
